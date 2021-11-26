@@ -1,39 +1,41 @@
 import * as React from 'react';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PeopleIcon from '@mui/icons-material/People';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import LayersIcon from '@mui/icons-material/Layers';
-import AssignmentIcon from '@mui/icons-material/Assignment';
 import ContactPageIcon from '@mui/icons-material/ContactPage';
+import InfoIcon from '@mui/icons-material/Info';
+import SchoolIcon from '@mui/icons-material/School';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import HomeIcon from '@mui/icons-material/Home';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import { blue } from '@mui/material/colors';
+import '@fontsource/roboto/300.css';
 
 export const mainListItems = (
   <div>
     <ListItem button>
       <ListItemIcon>
-        <DashboardIcon />
+        <DashboardIcon sx={{ color: blue[500] }}/>
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <InfoIcon sx={{ color: blue[500] }} />
       </ListItemIcon>
       <ListItemText primary="Profile Information" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <PeopleIcon />
+        <SchoolIcon sx={{ color: blue[500] }} />
       </ListItemIcon>
       <ListItemText primary="Academics" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <BarChartIcon />
+        <AccountCircleIcon sx={{ color: blue[500] }} />
       </ListItemIcon>
       <ListItemText primary="Career" />
     </ListItem>
@@ -46,19 +48,19 @@ export const secondaryListItems = (
     <ListSubheader inset>More Information</ListSubheader>
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <HomeIcon sx={{ color: blue[500] }} />
       </ListItemIcon>
       <ListItemText primary="Home" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <VpnKeyIcon sx={{ color: blue[500] }} />
       </ListItemIcon>
       <ListItemText primary="Password Change" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <ContactPageIcon />
+        <ContactPageIcon sx={{ color: blue[500] }} />
       </ListItemIcon>
       <ListItemText primary="Contact Us" />
     </ListItem>
