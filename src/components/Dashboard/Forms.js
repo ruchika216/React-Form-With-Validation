@@ -207,6 +207,9 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InputAdornment from '@mui/material/InputAdornment';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import { Typography } from '@mui/material';
+import Alert from '@mui/material/Alert';
 
 const categories = [
     {
@@ -229,7 +232,7 @@ export default function MultilineTextFields() {
   const [isErr,setIsErr] = React.useState(false);
   const [category, setCategory] = React.useState('EUR');
   const [err,setErr]=React.useState('');
-  const today=new Date()
+  
   const phoneNumber = useRef(null);
   const email = useRef(null);
   
@@ -243,13 +246,14 @@ export default function MultilineTextFields() {
   };
   const imageUpload=(e)=>{
       console.log(e.target.files)
-  }
+        // this contains image to b uploaded
+    }
   
   const submitted=()=>{
     const reEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
     const rePhoneNumber=/^((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}$/i
     
-    console.log(String.valueOf(today.getFullYear))
+    
     if(!reEmail.test(email.current.value)){
         // setOpen(true);
         // setErr("Invalid Email")
@@ -260,6 +264,9 @@ export default function MultilineTextFields() {
         setErr("Invalid Phone number");
         console.log("invalid phone number")
     }
+  }
+  const handleClose=()=>{
+    setIsErr(false)
   }
 
   return (
@@ -336,7 +343,7 @@ export default function MultilineTextFields() {
           onChange={handleChange}
         />
         
-        <TextField
+        {/* <TextField
           id="outlined-select-currency"
           select
           label="Social Account"
@@ -349,7 +356,7 @@ export default function MultilineTextFields() {
               {option.label}
             </MenuItem>
           ))}
-        </TextField>
+        </TextField> */}
         
         <TextField
           id="outlined-multiline-flexible"
@@ -359,17 +366,64 @@ export default function MultilineTextFields() {
           InputProps={{ inputProps: { accept: "image/*" } }}
           onChange={(e)=>imageUpload(e)}
         />
-
+        <Divider/>
+        <Typography component="p" variant="subheading" padding="30px">
+            Socials
+        </Typography>
+        <TextField
+          id="outlined-multiline-static"
+          label="Insta"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <InstagramIcon />
+              </InputAdornment>
+            ),
+          }}
+          onChange={handleChange}
+        />
+        <TextField
+          id="outlined-multiline-static"
+          label="LinkedIn"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <LinkedInIcon />
+              </InputAdornment>
+            ),
+          }}
+          onChange={handleChange}
+        />
+        <TextField
+          id="outlined-multiline-static"
+          label="Facebook"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <FacebookIcon />
+              </InputAdornment>
+            ),
+          }}
+          onChange={handleChange}
+        />
+        <Divider/>
         <TextField
           id="outlined-multiline-static"
           label="Comment"
           multiline
           rows={4}
-          defaultValue="Default Value"
+          
           onChange={handleChange}
         />
+        
       </div>
-
+      <Snackbar open={isErr} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+          {err}
+        </Alert>
+      </Snackbar>
+      <Button variant='contained'  onClick={submitted}>Submit</Button>
+{/* 
       <div>
       <TextField
         id="input-with-icon-textfield"
@@ -383,7 +437,7 @@ export default function MultilineTextFields() {
         }}
         variant="standard"
       />
-      <Button variant='contained' onClick={submitted}>Submit</Button>
+      
       
       </div>
       
@@ -402,8 +456,8 @@ export default function MultilineTextFields() {
       
       />
       </div>
-
-
+ */}
+{/* 
       <Box
       sx={{
         width: 500,
@@ -426,7 +480,7 @@ export default function MultilineTextFields() {
       />
     </Box>
 
-     
+      */}
     </Box>
   );
 }
