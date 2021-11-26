@@ -18,9 +18,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
-import Chart from './Chart';
-import Deposits from './Deposits';
+import ProfilePhoto from './ProfilePhoto';
+import ProfileInfo from './ProfileInfo';
 import Orders from './Orders';
+import Avatar from '@mui/material/Avatar';
+import { deepOrange } from '@mui/material/colors';
 
 function Copyright(props) {
   return (
@@ -93,7 +95,7 @@ function DashboardContent() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <AppBar position="absolute" open={open}>
+        <AppBar position="absolute" open={open} color= 'inherit'>
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
@@ -118,11 +120,17 @@ function DashboardContent() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              DASHBOARD
             </Typography>
             <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
+              <Badge color="secondary">
+              <Avatar
+                  sx={{ bgcolor: deepOrange[500] }}
+                  alt="Remy Sharp"
+                  src="/broken-image.jpg"
+              >
+                  H
+              </Avatar>
               </Badge>
             </IconButton>
           </Toolbar>
@@ -160,7 +168,7 @@ function DashboardContent() {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
-              {/* Chart */}
+              {/* ProfilePhoto */}
               <Grid item xs={12} md={4} lg={3}>
                 <Paper
                   sx={{
@@ -169,12 +177,14 @@ function DashboardContent() {
                     flexDirection: 'column',
                     height: 240,
                     borderRadius: 16,
+                    background: 'rgb(30, 136, 229)',
+                    opacity: '1.2',
                   }}
                 >
-                  <Chart />
+                  <ProfilePhoto />
                 </Paper>
               </Grid>
-              {/* Recent Deposits */}
+              {/* Name display */}
               <Grid item xs={12} md={8} lg={9}>
                 <Paper
                   sx={{
@@ -183,9 +193,12 @@ function DashboardContent() {
                     flexDirection: 'column',
                     height: 240,
                     borderRadius: 16,
+                    borderColor:'rgba(144, 202, 249, 0.46)',
+                    backgroundColor: 'rgb(30, 136, 229)',
+                    color: 'rgb(255, 255, 255)',
                   }}
                 >
-                  <Deposits />
+                  <ProfileInfo />
                 </Paper>
               </Grid>
               {/* Recent Orders */}
