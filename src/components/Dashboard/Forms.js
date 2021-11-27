@@ -1,196 +1,3 @@
-// import {Fragment} from "react";
-// import {ErrorMessage, Field, Form, Formik} from 'formik';
-// import * as yup from 'yup';
-
-// const Forms = () => {
-
-//     const formInitialSchema = {
-//         firstName: '',
-//         lastName: '',
-//         email: '',
-//         dob: "",
-// 	    phoneNumber: "",
-// 	    address: "",
-// 	    collegeName: "",
-// 	    socialmedia: "",
-// 	    profileImage: "",
-//         comment: '',
-//     }
-
-//     const formValidationSchema = yup.object().shape({
-//         firstName: yup.string().required('First Name is required'),
-//         lastName: yup.string().required('Last Name is required'),
-//         email: yup.string().required('Email is required').email("Please enter Valid email"),
-//         dob: yup.string().required('DOB is required'),
-//         phoneNumber: yup.string().required('Mobile Number is required'),
-//         address: yup.string().required('Address is required'),
-//         collegeName: yup.string().required('College Name is required'),
-//         socialmedia: yup.string().required('Socialmedia Name is required'),
-//         profileImage: yup.string().required('Profile Image Name is required'),
-//         comment: yup.string().required('Comment is required')
-
-//     });
-
-//     const handleFormSubmit = (values) => {
-//         console.log("Submitted values", values)
-
-//         // regex for phone no validation
-//         if(!/^((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}$/i.test(values.phoneNumber)){
-//             console.log("Invalid phone number")
-//         }
-//         // regex for email validation
-//         if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-//             console.log("Invalid email address");
-//         }
-
-//     }
-
-//     return (
-//         <Fragment>
-
-//             <div className="container">
-//                 {/* <div className="col-md-12">
-//                     <h1 className="text-center">Edit</h1>
-//                 </div> */}
-
-//                 <div className="col-md-8 offset-md-2">
-//                     <Formik initialValues={formInitialSchema}
-//                             validationSchema={formValidationSchema}
-//                             onSubmit={(values => handleFormSubmit(values))}>
-
-//                         <Form>
-
-//                         <div className="row">
-//                             <div className="col-md-6 mt-2">
-//                                 <Field type="text"
-//                                        name="firstName"
-//                                        placeholder="Enter your First Name"
-//                                        className="form-control"/>
-
-//                                 <p className="text-danger">
-//                                     <ErrorMessage name="firstName"/>
-//                                 </p>
-//                             </div>
-//                             <div className="col-md-6 mt-2">
-//                                 <Field type="text"
-//                                        name="lastName"
-//                                        placeholder="Enter your Last Name"
-//                                        className="form-control"/>
-
-//                                 <p className="text-danger">
-//                                     <ErrorMessage name="lastName"/>
-//                                 </p>
-//                             </div>
-//                             </div>
-
-//                         <div className="row">
-//                             <div className="col-md-6 mt-2">
-//                                 <Field type="email"
-//                                        name="email"
-//                                        placeholder="Enter your Email"
-//                                        className="form-control"/>
-//                                 <p className="text-danger">
-//                                     <ErrorMessage name="email"/>
-//                                 </p>
-//                             </div>
-//                             <div className="col-md-6 mt-2">
-//                                 <Field type="date"
-//                                        name="dob"
-//                                        placeholder="Enter your DOB"
-//                                        className="form-control"/>
-//                                 <p className="text-danger">
-//                                     <ErrorMessage name="dob"/>
-//                                 </p>
-//                             </div>
-//                             </div>
-
-//                             <div className="row">
-//                             <div className="col-md-6 mt-2">
-//                                 <Field type="text"
-
-//                                        name="phoneNumber"
-//                                        placeholder="Enter your MobileNumber"
-//                                        className="form-control"/>
-//                                 <p className="text-danger">
-//                                     <ErrorMessage name="phoneNumber"/>
-//                                 </p>
-//                             </div>
-//                             <div className="col-md-6 mt-2">
-//                                 <Field type="text"
-//                                        name="address"
-//                                        placeholder="Enter your address"
-//                                        className="form-control"/>
-//                                 <p className="text-danger">
-//                                     <ErrorMessage name="address"/>
-//                                 </p>
-//                             </div>
-//                             </div>
-
-//                             <div className="row">
-//                             <div className="col-md-6 mt-2">
-//                                 <Field type="text"
-//                                        name="collegeName"
-
-//                                        placeholder="Enter your College Name"
-//                                        className="form-control"/>
-//                                 <p className="text-danger">
-//                                     <ErrorMessage name="collegeName"/>
-//                                 </p>
-//                             </div>
-//                             <div className="col-md-6 mt-2">
-//                                 <Field type="text"
-//                                        name="socialmedia"
-//                                        placeholder="Enter your Social Media"
-//                                        className="form-control"/>
-//                                 <p className="text-danger">
-//                                     <ErrorMessage name="Social Media"/>
-//                                 </p>
-//                             </div>
-//                             </div>
-
-//                             <div className="row">
-//                             <div className="col-md-6 mt-2">
-//                                 <Field type="text"
-//                                        name="profileImage"
-//                                        placeholder="Enter your Profile Image"
-//                                        className="form-control"/>
-//                                 <p className="text-danger">
-//                                     <ErrorMessage name="profileImage"/>
-//                                 </p>
-//                             </div>
-//                             <div className="col-md-6 mt-2">
-//                                 <Field type="text"
-//                                        name="comment"
-//                                        placeholder="Enter your Comment"
-//                                        className="form-control"/>
-//                                 <p className="text-danger">
-//                                     <ErrorMessage name="comment"/>
-//                                 </p>
-//                             </div>
-//                             </div>
-
-//                             <div className="col-md-12 mt-2">
-//                                 <button className="btn btn-primary btn-block"
-//                                         type="submit"
-//                                 >
-//                                     Submit Details
-//                                 </button>
-//                             </div>
-
-//                         </Form>
-
-//                     </Formik>
-//                 </div>
-
-//             </div>
-
-//         </Fragment>
-
-//     )
-// }
-
-// export default Forms;
-
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import Snackbar from "@mui/material/Snackbar";
@@ -207,6 +14,7 @@ import Divider from "@mui/material/Divider";
 import { Typography } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import userEvent from "@testing-library/user-event";
+import { tr } from "date-fns/locale";
 
 const categories = [
   {
@@ -226,8 +34,9 @@ const categories = [
 export default function MultilineTextFields() {
   const [infos, setInfos] = useState([]);
   useEffect(() => {
-    const API = "http://localhost:4000/api/get-profile";
+    const API = "http://835f-203-192-214-22.ngrok.io/api/profile-update";
     fetch(API, {
+      method:'POST',
       headers: {
         authorization:
           "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWExMThkYjM2NGU0NTc2NWZmMTJlYzkiLCJyb2xlIjowLCJpYXQiOjE2Mzc5NDc3NTV9.QfXnMTrdoi3XQX2v2rdACXgBC5AKaDXdLDwqqCU7Nnc",
@@ -235,9 +44,40 @@ export default function MultilineTextFields() {
       },
     })
       .then((data) => data.json())
-      .then((infos) => setInfos(infos));
+      .then((result) => setUser(result));
   }, []);
 
+  const updateProfile=()=>{
+    const API = "http://835f-203-192-214-22.ngrok.io/api/profile-update";
+    return fetch(API,{
+      method:'POST',
+      headers: {
+        authorization:
+          "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWExMThkYjM2NGU0NTc2NWZmMTJlYzkiLCJyb2xlIjowLCJpYXQiOjE2Mzc5NDc3NTV9.QfXnMTrdoi3XQX2v2rdACXgBC5AKaDXdLDwqqCU7Nnc",
+        "Content-Type": "application/json",
+      },
+      body:JSON.stringify({
+        "dob":user.dob,
+        "phoneNumber":user.phoneNumber,
+        "address":user.address,
+        "collegeName":"SLIET",
+        "socialmedia":{
+                "facebook":"Rucika",
+                "instagram":"Ruchika",
+                "linkedin":"Ruchika"
+                },
+        "profileImage":user.profileImage
+        
+      })
+    }).then(response=>{
+      return( response.json());
+
+      }).catch(err=>{
+          console.log(err);
+      });
+  }
+
+  
   const [value, setValue] = React.useState("Controlled");
   const [isErr, setIsErr] = React.useState(false);
   const [category, setCategory] = React.useState("EUR");
@@ -247,19 +87,26 @@ export default function MultilineTextFields() {
   const email = useRef(null);
 
   const handleChange = (event) => {
-    if ((event.target.id = "firstName")) {
-      console.log(event.target.value);
+    if ((event.target.id == "firstName")) {
+      setUser({ ...user, name: event.target.value});
+      console.log(event.target.value)
+    }else if(event.target.id=='dob'){
+      setUser({ ...user, dob: event.target.value});
     }
-
-    setValue(event.target.value);
-    setCategory(event.target.value);
+    else if((event.target.id)=='address'){
+      console.log(event.target.value)
+      setUser({ ...user, address: event.target.value});
+    }
   };
   const imageUpload = (e) => {
-    console.log(e.target.files);
+    console.log(URL.createObjectURL(e.target.files[0]));
+
+    setUser({ ...user, profileImage: URL.createObjectURL(e.target.files[0])});
     // this contains image to b uploaded
   };
 
   const submitted = () => {
+    
     const reEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     const rePhoneNumber =
       /^((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}$/i;
@@ -268,10 +115,25 @@ export default function MultilineTextFields() {
       // 
       console.log("Invalid email");
     }
-    if (!rePhoneNumber.test(phoneNumber.current.value)) {
+    else if (!rePhoneNumber.test(phoneNumber.current.value)) {
       setIsErr(true);
       setErr("Invalid Phone number");
       console.log("invalid phone number");
+    }else if(!user.address){
+      
+      setIsErr(true);
+      setErr('Address is Required')
+    }else if(!user.dob){
+      setIsErr(true);
+      setErr('invalid DOB')
+    }
+    else if(!user.profileImage){
+      console.log(user.image)
+      setIsErr(true)
+      setErr('Please upload image')
+    }
+    else{
+      updateProfile().then(response=>console.log(response));
     }
 
     console.log();
@@ -284,12 +146,15 @@ export default function MultilineTextFields() {
 
 
   const [user,setUser]= useState({
+    name:'',
     dob: "",
+    email:'',
     phoneNumber: "",
     regNo: "",
     branchOfStudy: "",
     collegeName: "",
     yearOfStudy: "",
+    image:'',
     address: "",
     socialmedia: {
         facebook: "",
@@ -297,21 +162,7 @@ export default function MultilineTextFields() {
         linkedin: "",
     }
   });
-
-  // let names, values;
-  // const handleInputs = (e) => {
-  //   console.log(e);
-  //   names = e.target.names;
-  //   values = e.target.values;
-
-  //   setUser({ ...user, [names]: values});
-  // }
-
-  let name = infos.name ? infos.name : "";
-  let emailId = infos.email ? infos.email : "";
-  let mobileNumber = infos.phoneNumber ? infos.phoneNumber : "";
-  let dob = infos.dob ? infos.dob : "";
-
+  
 
   return (
     <Box
@@ -329,55 +180,48 @@ export default function MultilineTextFields() {
         <TextField
           id="firstName"
           label="First Name"
-          defaultValue={name}
-          // value={name}
+          
+          value={user.name}
           required
           maxRows={2}
           // onChange = {handleInputs}
-          //   onChange={handleChange}
+            onChange={handleChange}
         />
-        <TextField
-          id="outlined-multiline-flexible"
-          label="Last Name"
-          multiline
-          required
-          maxRows={2}
-
-          //   onChange={handleChange}
-        />
+        
         <TextField
           id="email"
           label="Email"
-          defaultValue={emailId}
+          value={user.email}
           type="email"
           inputRef={email}
           required
         />
         <TextField
-          id="outlined-multiline-flexible"
+          id="dob"
           helperText="Date of Birth"
           type="date"
           InputProps={{ inputProps: { max: `2021-11-26` } }}
-          onChange={handleChange}
-          value= {dob}
-          // defaultValue ={} 
+          required
+          onChange={handleChange} 
         />
         <TextField
           id="mobile_number"
-          label="Phone number"
+          required
           error={isErr}
-          helperText={isErr ? "Invalid Phone Number" : ""}
+          helperText={isErr ? "Invalid Phone Number" : "Phone Number"}
           type="text"
           inputRef={phoneNumber}
           required
-          onChange={handleChange}
-          value= {mobileNumber}
+          
+          // value= {mobileNumber}
         />
         <TextField
-          id="outlined-multiline-flexible"
+          id="address"
           label="Address"
           type="text"
+          
           multiline
+          required
           maxRows={2}
           onChange={handleChange}
         />
@@ -385,29 +229,18 @@ export default function MultilineTextFields() {
           id="outlined-multiline-flexible"
           label="College Name"
           type="text"
+          value={"SLIET"}
+          disabled
           required
           multiline
           maxRows={2}
           onChange={handleChange}
         />
 
-        {/* <TextField
-          id="outlined-select-currency"
-          select
-          label="Social Account"
-          value={category}
-          onChange={handleChange}
-        //   helperText="Social Account"
-        >
-          {categories.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField> */}
+      
 
         <TextField
-          id="outlined-multiline-flexible"
+          id="profile_image"
           helperText="Profile Image"
           type="file"
           required
