@@ -19,7 +19,7 @@ function ProfilePhoto() {
               <img style={{height: '100%', width: '100%', borderRadius: '25%'}}
                  src={`${img}?w=164&h=164&fit=crop&auto=format`}
                  srcSet={`${img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                 alt="Image"
+                 alt="profileImage"
                  loading="lazy"
               />
           </Box>

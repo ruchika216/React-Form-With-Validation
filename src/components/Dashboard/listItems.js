@@ -2,7 +2,6 @@ import * as React from 'react';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ContactPageIcon from '@mui/icons-material/ContactPage';
 import InfoIcon from '@mui/icons-material/Info';
@@ -12,6 +11,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import { blue } from '@mui/material/colors';
 import '@fontsource/roboto/300.css';
+import { Divider } from '@mui/material';
 
 export const mainListItems = (
   <div>
@@ -45,7 +45,7 @@ export const mainListItems = (
 
 export const secondaryListItems = (
   <div>
-    <ListSubheader inset>More Information</ListSubheader>
+    <Divider>More</Divider>
     <ListItem button>
       <ListItemIcon>
         <HomeIcon sx={{ color: blue[500] }} />

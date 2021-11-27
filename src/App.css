@@ -6,7 +6,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: #fde7f9;
-  background-image: linear-gradient(315deg, #fde7f9 0%, #aacaef 74%);
+  background-image: linear-gradient(to right top, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #fbfdff, #f5fbff, #edfaff, #cdfbff, #a7fdff, #78feff, #34fffa);
 
 }
 

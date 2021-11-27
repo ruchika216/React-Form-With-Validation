@@ -16,19 +16,20 @@ import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
 import ProfilePhoto from './ProfilePhoto';
 import ProfileInfo from './ProfileInfo';
 import ProfileSetup from './ProfileSetup';
 import Avatar from '@mui/material/Avatar';
-import { deepOrange } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
+import { pink } from '@mui/material/colors';
+
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="http://sliet.ac.in/">
         Your Website
       </Link>{' '}
       {new Date().getFullYear()}
@@ -63,6 +64,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
       position: 'relative',
       whiteSpace: 'nowrap',
       width: drawerWidth,
+      backgroundImage: 'linear-gradient(to right top, #0435bf, #5858cd, #847cd9, #aaa2e6, #cfc9f1, #cedcf9, #d9ecfc, #edfaff, #cdfbff, #a7fdff, #78feff, #34fffa)',
+      // backgroundImage: 'linear-gradient(to right top, #34fffa, #78feff, #a7fdff, #cdfbff, #edfaff, #d9ecfc, #cedcf9, #cfc9f1, #aaa2e6, #847cd9, #5858cd, #0435bf)',
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
@@ -83,7 +86,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const mdTheme = createTheme();
+const mdTheme = createTheme()
 
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
@@ -93,9 +96,18 @@ function DashboardContent() {
 
   return (
     <ThemeProvider theme={mdTheme}>
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={{ 
+        display: 'flex', 
+        // backgroundImage: 'linear-gradient(to right top, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #fbfdff, #f5fbff, #edfaff, #cdfbff, #a7fdff, #78feff, #34fffa)',
+        }}>
         <CssBaseline />
-        <AppBar position="absolute" open={open} color= 'inherit'>
+        <AppBar 
+        position="absolute" 
+        open={open} 
+        style={{backgroundColor: 'white',
+        // backgroundImage: 'linear-gradient(to right, #6372ff 0%, #5ca9fb 100%)',
+        backgroundImage: 'linear-gradient(to right top, #34fffa, #78feff, #a7fdff, #cdfbff, #edfaff, #d9ecfc, #cedcf9, #cfc9f1, #aaa2e6, #847cd9, #5858cd, #0435bf)'
+      }}>
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
@@ -111,12 +123,20 @@ function DashboardContent() {
                 ...(open && { display: 'none' }),
               }}
             >
-              <MenuIcon />
+              <MenuIcon 
+              sx={{ color: pink[500], 
+              '&:hover':{
+                color: "#000",
+                opacity:[0.9],
+              },
+              }}
+              
+              />
             </IconButton>
             <Typography
               component="h1"
               variant="h6"
-              color="inherit"
+              color="#000"
               noWrap
               sx={{ flexGrow: 1 }}
             >
@@ -125,7 +145,7 @@ function DashboardContent() {
             <IconButton color="inherit">
               <Badge color="secondary">
               <Avatar
-                  sx={{ bgcolor: deepOrange[500] }}
+                  sx={{ bgcolor: blue[500] }}
                   alt="Remy Sharp"
                   src="/broken-image.jpg"
               >
@@ -135,7 +155,12 @@ function DashboardContent() {
             </IconButton>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={open}>
+
+        {/* DRAWER */}
+        <Drawer 
+        variant="permanent" 
+        open={open}
+        >
           <Toolbar
             sx={{
               display: 'flex',
@@ -145,7 +170,7 @@ function DashboardContent() {
             }}
           >
             <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
+              <ChevronLeftIcon fontSize="large" sx={{ color: pink[500] }} />
             </IconButton>
           </Toolbar>
           <Divider />
@@ -153,13 +178,16 @@ function DashboardContent() {
           <Divider />
           <List>{secondaryListItems}</List>
         </Drawer>
+        
         <Box
           component="main"
           sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
+            // backgroundColor: (theme) =>
+            //   theme.palette.mode === 'light'
+            //     ? theme.palette.grey[100]
+            //     : theme.palette.grey[900],
+            backgroundImage: 'linear-gradient(to right, #6372ff 0%, #5ca9fb 100%)',
+            // backgroundImage: 'linear-gradient(to right top, #34fffa, #78feff, #a7fdff, #cdfbff, #edfaff, #edfaff, #edfaff, #edfaff, #cdfbff, #a7fdff, #78feff, #34fffa)',
             flexGrow: 1,
             height: '100vh',
             overflow: 'auto',
@@ -177,7 +205,8 @@ function DashboardContent() {
                     flexDirection: 'column',
                     height: 240,
                     borderRadius: 16,
-                    background: 'rgb(30, 136, 229)',
+                    backgroundImage: 'linear-gradient(to right top, #34fffa, #78feff, #a7fdff, #cdfbff, #edfaff, #d9ecfc, #cedcf9, #cfc9f1, #aaa2e6, #847cd9, #5858cd, #0435bf)',
+                    // background: 'rgb(30, 136, 229)',
                     opacity: '1.2',
                   }}
                 >
@@ -194,7 +223,8 @@ function DashboardContent() {
                     height: 240,
                     borderRadius: 16,
                     borderColor:'rgba(144, 202, 249, 0.46)',
-                    backgroundColor: 'rgb(30, 136, 229)',
+                    // backgroundColor: 'rgb(30, 136, 229)',
+                    backgroundImage: 'linear-gradient(to right top, #34fffa, #78feff, #a7fdff, #cdfbff, #edfaff, #d9ecfc, #cedcf9, #cfc9f1, #aaa2e6, #847cd9, #5858cd, #0435bf)',
                     color: 'rgb(255, 255, 255)',
                   }}
                 >
@@ -203,7 +233,17 @@ function DashboardContent() {
               </Grid>
               {/* Profile Setup Info */}
               <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <Paper 
+                sx={{ 
+                  p: 2, 
+                  display: 'flex', 
+                  flexDirection: 'column',
+                  borderRadius: 16,
+                  borderColor:'rgba(144, 202, 249, 0.46)',
+                  // backgroundColor: '#2196f3',
+                  backgroundImage: 'linear-gradient(to right top, #34fffa, #78feff, #a7fdff, #cdfbff, #edfaff, #d9ecfc, #cedcf9, #cfc9f1, #aaa2e6, #847cd9, #5858cd, #0435bf)',
+                  color: 'rgb(255, 255, 255)',
+                  }}>
                   <ProfileSetup />
                 </Paper>
               </Grid>

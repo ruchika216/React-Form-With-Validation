@@ -2,39 +2,23 @@ import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Box from "@mui/material/Box";
-import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InputAdornment from "@mui/material/InputAdornment";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import { Typography } from "@mui/material";
 import Alert from "@mui/material/Alert";
-import userEvent from "@testing-library/user-event";
-import { tr } from "date-fns/locale";
+import { blue } from '@mui/material/colors'; 
+import Chip from '@mui/material/Chip';
 
-const categories = [
-  {
-    value: "Linkdin",
-    label: <LinkedInIcon />,
-  },
-  {
-    value: "Instagram",
-    label: <InstagramIcon />,
-  },
-  {
-    value: "Facebook",
-    label: <FacebookIcon />,
-  },
-];
 
 export default function MultilineTextFields() {
-  const [infos, setInfos] = useState([]);
+  // const [infos, setInfos] = useState([]);
   useEffect(() => {
-    const API = "http://835f-203-192-214-22.ngrok.io/api/profile-update";
+    
+    const API = "http://04fa-203-192-214-22.ngrok.io/api/profile-update";
     fetch(API, {
       method:'POST',
       headers: {
@@ -48,7 +32,7 @@ export default function MultilineTextFields() {
   }, []);
 
   const updateProfile=()=>{
-    const API = "http://835f-203-192-214-22.ngrok.io/api/profile-update";
+    const API = "http://04fa-203-192-214-22.ngrok.io/api/profile-update";
     return fetch(API,{
       method:'POST',
       headers: {
@@ -78,22 +62,22 @@ export default function MultilineTextFields() {
   }
 
   
-  const [value, setValue] = React.useState("Controlled");
+  // const [value, setValue] = React.useState("Controlled");
   const [isErr, setIsErr] = React.useState(false);
-  const [category, setCategory] = React.useState("EUR");
+  // const [category, setCategory] = React.useState("EUR");
   const [err, setErr] = React.useState("");
 
   const phoneNumber = useRef(null);
   const email = useRef(null);
 
   const handleChange = (event) => {
-    if ((event.target.id == "firstName")) {
+    if ((event.target.id === "firstName")) {
       setUser({ ...user, name: event.target.value});
       console.log(event.target.value)
-    }else if(event.target.id=='dob'){
+    }else if(event.target.id ==='dob'){
       setUser({ ...user, dob: event.target.value});
     }
-    else if((event.target.id)=='address'){
+    else if((event.target.id) ==='address'){
       console.log(event.target.value)
       setUser({ ...user, address: event.target.value});
     }
@@ -179,8 +163,7 @@ export default function MultilineTextFields() {
       <div>
         <TextField
           id="firstName"
-          label="First Name"
-          
+          label="Full Name"
           value={user.name}
           required
           maxRows={2}
@@ -211,7 +194,7 @@ export default function MultilineTextFields() {
           helperText={isErr ? "Invalid Phone Number" : "Phone Number"}
           type="text"
           inputRef={phoneNumber}
-          required
+          
           
           // value= {mobileNumber}
         />
@@ -236,9 +219,6 @@ export default function MultilineTextFields() {
           maxRows={2}
           onChange={handleChange}
         />
-
-      
-
         <TextField
           id="profile_image"
           helperText="Profile Image"
@@ -247,17 +227,16 @@ export default function MultilineTextFields() {
           InputProps={{ inputProps: { accept: "image/*" } }}
           onChange={(e) => imageUpload(e)}
         />
-        <Divider />
-        <Typography component="p" variant="subheading" padding="30px">
-          Socials
-        </Typography>
+        <Divider>
+        <Chip label="SOCIAL MEDIA" />
+      </Divider>
         <TextField
           id="outlined-multiline-static"
           label="Insta"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <InstagramIcon />
+                <InstagramIcon  sx={{ color: blue[500] }}/>
               </InputAdornment>
             ),
           }}
@@ -269,7 +248,7 @@ export default function MultilineTextFields() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <LinkedInIcon />
+                <LinkedInIcon sx={{ color: blue[500] }}/>
               </InputAdornment>
             ),
           }}
@@ -281,13 +260,15 @@ export default function MultilineTextFields() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <FacebookIcon />
+                <FacebookIcon sx={{ color: blue[500] }}/>
               </InputAdornment>
             ),
           }}
           onChange={handleChange}
         />
-        <Divider />
+        <Divider>
+        <Chip label="REVIEW" />
+      </Divider>
         <TextField
           id="outlined-multiline-static"
           label="Comment"
@@ -301,67 +282,17 @@ export default function MultilineTextFields() {
           {err}
         </Alert>
       </Snackbar>
-      <Button variant="contained" value="submit" onClick={submitted}>
+
+      <Button 
+        variant="contained" 
+        value="submit" 
+        size="large"
+        onClick={submitted}
+        style={{marginLeft: '31px'}}
+        >
         Submit
       </Button>
-      {/* 
-      <div>
-      <TextField
-        id="input-with-icon-textfield"
-        label="TextField"
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <AccountCircle />
-            </InputAdornment>
-          ),
-        }}
-        variant="standard"
-      />
-      
-      
-      </div>
-      
-      <div>
-      <TextField 
-      label="Social Media" 
-      color="secondary" 
-      focused 
-      InputProps={{
-        startAdornment: (
-          <InputAdornment position="start">
-            <LinkedInIcon />
-          </InputAdornment>
-        ),
-      }}
-      
-      />
-      </div>
- */}
-      {/* 
-      <Box
-      sx={{
-        width: 500,
-        maxWidth: '100%',
-      }}
-    >
-      <TextField 
-      id="fullWidth"
-      label="Social Media" 
-      color="secondary" 
-      focused 
-      InputProps={{
-        startAdornment: (
-          <InputAdornment position="start">
-            <LinkedInIcon />
-          </InputAdornment>
-        ),
-      }}
-      
-      />
-    </Box>
-
-      */}
+     
     </Box>
   );
 }
