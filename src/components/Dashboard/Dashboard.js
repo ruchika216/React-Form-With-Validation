@@ -20,7 +20,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
 import ProfilePhoto from './ProfilePhoto';
 import ProfileInfo from './ProfileInfo';
-import Orders from './Orders';
+import ProfileSetup from './ProfileSetup';
 import Avatar from '@mui/material/Avatar';
 import { deepOrange } from '@mui/material/colors';
 
@@ -201,10 +201,10 @@ function DashboardContent() {
                   <ProfileInfo />
                 </Paper>
               </Grid>
-              {/* Recent Orders */}
+              {/* Profile Setup Info */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
+                  <ProfileSetup />
                 </Paper>
               </Grid>
             </Grid>
