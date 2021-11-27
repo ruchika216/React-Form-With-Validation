@@ -422,7 +422,7 @@ export default function MultilineTextFields() {
           {err}
         </Alert>
       </Snackbar>
-      <Button variant='contained'  onClick={submitted}>Submit</Button>
+      <Button variant='contained' type="submit"  onClick={submitted}>Submit</Button>
 {/* 
       <div>
       <TextField
